@@ -19,6 +19,7 @@
 | [**06_BASES_DE_DATOS_STORAGE_Y_STREAMING.md**](file:///C:/Users/SEBAS/Desktop/Documentacion/06_BASES_DE_DATOS_STORAGE_Y_STREAMING.md) | PostgreSQL, SQLite, DuckDB, MinIO (S3), Redis, Apache Kafka, AWS SQS, ClickHouse, OpenMetadata. | Preguntas sobre persistencia OLTP vs OLAP, colas de mensajería, cachés, data lakehouse y gobernanza de datos. |
 | [**07_DEVOPS_TESTING_Y_ARQUITECTURA.md**](file:///C:/Users/SEBAS/Desktop/Documentacion/07_DEVOPS_TESTING_Y_ARQUITECTURA.md) | Docker, Docker Compose, Pytest (Asyncio/Cov), Vitest, uv, Medallion Architecture, Microservicios, Clean Architecture. | Preguntas sobre testing, despliegue, CI/CD, diseño de sistemas y justificación de patrones arquitectónicos. |
 | [**08_MAPA_DE_PROYECTOS.md**](file:///C:/Users/SEBAS/Desktop/Documentacion/08_MAPA_DE_PROYECTOS.md) | Inventario exacto de carpetas de proyectos en tu Desktop, stack utilizado y funcionalidades clave. | Para dar ejemplos reales de tu propia experiencia: *"En mi proyecto Pipeline-analitica implementé..."* |
+| [**09_TECNOLOGIAS_PROYECTOS_COOPERATIVOS.md**](file:///C:/Users/SEBAS/Desktop/Documentacion/09_TECNOLOGIAS_PROYECTOS_COOPERATIVOS.md) | **Proyectos Cooperativos & Equipo.** Tecnologías implementadas por compañeros (Dylan, Sergio, Jefri, Daniel, Isac, Luis, etc.) y repositorios grupales. | Preguntas sobre trabajo en equipo: *"¿Qué tecnologías aportaron otros y cómo te integraste con ellas?"* (Qwen 2.5 local, RBAC, SlowAPI, pg.Pool, Great Expectations, Alembic, Cassandra). |
 
 ---
 

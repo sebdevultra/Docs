@@ -14,6 +14,7 @@
 7. [Librerías Python Clave](#7-librerías-python-clave)
 8. [Librerías JavaScript & TypeScript Clave](#8-librerías-javascript--typescript-clave)
 9. [DevOps, Testing & Herramientas](#9-devops-testing--herramientas)
+10. [Tecnologías en Proyectos Cooperativos & Equipos](#10-tecnologías-en-proyectos-cooperativos--equipos)
 
 ---
 
@@ -330,3 +331,23 @@
 | **Pytest & Pytest-Asyncio** | Testing Unitario e Integración | Escribir tests limpios con fixtures, parametrización y soporte nativo para corrutinas asíncronas en FastAPI. | Pruebas de estrés masivo de carga de red (usa **k6** o **Locust**). |
 | **Vitest** | Testing Frontend | Ejecutar pruebas unitarias para React y TypeScript con la misma configuración de Vite y altísima velocidad. | Proyectos basados en Jest que no usan Vite. |
 | **OpenMetadata** | Gobernanza de Datos | Catálogo centralizado de datos, linaje automático (quién consume qué tabla), reglas de calidad y glosario de términos. | Pequeñas bases de datos de una sola aplicación sin un equipo de datos compartido. |
+
+---
+
+## 10. Tecnologías en Proyectos Cooperativos & Equipos
+
+| Herramienta / Técnica | Propósito en Equipo | ✅ Cuándo USARLA | ❌ Cuándo NO USARLA |
+| :--- | :--- | :--- | :--- |
+| **Qwen 2.5 Coder / Ollama** | LLM Local Offline | Privacidad total, ejecución en servidores locales sin costo de tokens (*Dylan en Pipeline-analitica*). | Máquinas sin suficiente GPU/VRAM o cuando se requiere razonamiento de frontera multimodal masivo. |
+| **Data Observability (Plotly/Streamlit)** | Salud del Pipeline de Datos | Monitorear en tiempo real frescura, volumen, esquemas y anomalías en las capas Medallón (*Sergio en Pipeline-analitica*). | Demos estáticas donde solo importan gráficos de negocio simples. |
+| **Quality Gates Declarativos** | Control de Promoción de Datos | Bloquear automáticamente datos corruptos (nulos, duplicados) enviándolos a cuarentena (*Jefri en Pipeline-analitica*). | Procesos exploratorios manuales de una sola vez donde la velocidad es la única prioridad. |
+| **RBAC (Role-Based Access)** | Aislamiento de Perfiles | Restringir endpoints y vistas según roles (`coder`, `staff`, `admin`) con claims en JWT (*Daniel en Centinela/Shama*). | Aplicaciones mono-usuario o scripts de uso personal. |
+| **SlowAPI** | Rate Limiting & Anti-Brute-Force | Proteger endpoints sensibles (`/login`, `/radicar`) contra ataques de denegación de servicio (*Centinela/Shama*). | Redes privadas internas cerradas entre microservicios con confianza mutua. |
+| **Cliente HTTP Centralizado (`httpClient.js`)** | Interceptor de Red en SPA | Centralizar URL base, tokens de autorización y manejo de errores 401/500 (*One & Luis en ZOE-CARE*). | Proyectos con frameworks que ya traen su propio cliente como Axios o Angular HttpClient. |
+| **Pool Nativo PostgreSQL (`pg.Pool`)** | Máxima Concurrencia SQL | Manejar cientos de conexiones concurrentes en Node.js sin el overhead de memoria de un ORM (*Isac & Luis en ZOE-CARE*). | Proyectos donde el equipo prefiere tipado estricto automático y migraciones declarativas (usa Prisma o SQLAlchemy). |
+| **Great Expectations** | Testing de Datos Industrial | Validar reglas y aserciones sobre datasets en pipelines corporativos (*End-to-End Data Pipeline*). | Pequeños scripts con validaciones booleanas básicas (`assert len(df) > 0`). |
+| **Alembic** | Migraciones de Esquemas SQL | Versionar cambios en la base de datos para que múltiples desarrolladores no colisionen esquemas (*Full-Stack Template*). | Proyectos con bases de datos NoSQL sin esquemas o SQLite efímero de prueba. |
+| **Apache Cassandra** | NoSQL Wide-Column Masivo | Ingesta de escrituras masivas de alta velocidad en arquitecturas masterless (*End-to-End Data Pipeline*). | Consultas con múltiples `JOIN` relacionales complejos o transacciones multi-tabla. |
+| **Snowflake** | Cloud Data Warehouse | Consultas analíticas SQL concurrentes a escala corporativa con computación desacoplada del almacenamiento. | Pequeños datasets que caben en DuckDB o PostgreSQL sin justificar costos cloud. |
+| **CrewAI / AutoGen** | Multi-Agente Jerárquico | Orquestar cuadrillas de agentes con roles, metas e historias asignadas (*500 AI Agents Projects*). | Consultas simples a LLMs donde un solo prompt directo resuelve el problema sin overhead. |
+| **TanStack Query (React Query)** | Caché de Estado de Servidor | Sincronización automática, deduplicación de peticiones y revalidación en segundo plano en React (*Full-Stack Template*). | Estado local simple de un formulario (usa `useState`). |

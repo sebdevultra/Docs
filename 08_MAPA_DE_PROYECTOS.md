@@ -39,17 +39,18 @@ graph TD
 
 ### 🏆 `pruebas/Pipeline-analitica` & `Antigravit/final_project`
 * **Ubicación:** `C:\Users\SEBAS\Desktop\pruebas\Pipeline-analitica`
+* **Tipo de Proyecto:** **Proyecto Cooperativo / Colaborativo** (Equipo: *Sebastian Ortiz, Dylan Gamero, Sergio Tobias, Jefri Calderin, Hector, estebanp26, Luis Gomez*).
 * **Rol / Arquitectura:** Pipeline analítico empresarial con **Arquitectura Medallón (Lakehouse)** y gobernanza de datos.
-* **Stack Completo:**
+* **Stack Completo & Aportes de Equipo:**
   * **Procesamiento Distribuido:** Apache Spark 3.5.1 (`spark_medallion_job.py`, `spark_gold_models.py`).
   * **Orquestación:** Apache Airflow (`dag_medallion_pipeline.py`).
   * **Almacenamiento de Objetos:** MinIO (S3-compatible) con capas Bronze, Silver y Gold en formato **Apache Parquet**.
-  * **Motor Analítico In-Process:** DuckDB (consultas SQL ultrarrápidas y vectorizadas).
-  * **Gobernanza & Calidad:** OpenMetadata (`lineage_tracker.py`, catálogo de datos, reglas de validación `retail_rules.json`).
+  * **Motor Analítico In-Process:** DuckDB (consultas SQL ultrarrápidas y normalizador de fechas por Dylan).
+  * **LLM Local:** **Qwen 2.5 Coder** integrado localmente por Dylan Gamero para el chatbot sin timeouts.
+  * **Data Observability:** Tema de observabilidad y dashboards interactivos en Streamlit & Plotly por Sergio Tobias.
+  * **Gobernanza & Calidad:** OpenMetadata (`lineage_tracker.py`, catálogo de datos por Hector/Esteban) y Quality Gates declarativos con reglas `retail_rules.json` por Jefri Calderin.
   * **Backend & API:** FastAPI (`app/backend/main.py`), Pydantic v2, HTTPX.
-  * **Dashboards:** Streamlit (`dashboards/views`, `dashboards/components`), Plotly.
-  * **Base de Datos:** PostgreSQL con SQLAlchemy 2.0 y `psycopg2-binary`.
-  * **Testing:** Pytest completo (unit tests, integration tests, mock data).
+  * **Testing:** Pytest completo (unit tests, integration tests con timeouts ajustados para Windows por Jefri).
 * **Frase Clave para la Prueba:**
   > *"Diseñé e implementé un Data Lakehouse con Arquitectura Medallón donde los datos crudos ingresan a MinIO Bronze, se procesan y limpian con Spark hacia Parquet Silver con reglas de calidad automáticas, y se agregan en Gold para ser consumidos mediante DuckDB y Streamlit, registrando el linaje completo en OpenMetadata."*
 
@@ -133,21 +134,30 @@ graph TD
 
 ---
 
-### 🛡️ `Antigravit/RIWI_APP` (Centinela)
+### 🛡️ `Antigravit/RIWI_APP` (Centinela / Shama)
 * **Ubicación:** `C:\Users\SEBAS\Desktop\Antigravit\RIWI_APP\Centinela`
-* **Rol:** Backend seguro y resiliente con rate-limiting y pruebas de estrés.
-* **Stack:** FastAPI, SQLAlchemy asíncrono con **`asyncpg`** y **`aiosqlite`**, **SlowAPI** (control de peticiones), **Bcrypt**, PyYAML, Vitest para el frontend React.
+* **Tipo de Proyecto:** **Proyecto Cooperativo / Colaborativo** (Equipo: *Sebastian Ortiz, Daniel Martinez, Sebastian Castiblanco, jhonata0200p, Sbenavides14, Josue Blanco*).
+* **Rol:** Backend seguro y resiliente con rate-limiting, reglas de negocio y control de acceso RBAC.
+* **Stack & Aportes de Equipo:**
+  * **FastAPI Asíncrono:** Arquitectura Shama v2.0-PRO consolidada por Sebastian Ortiz con SQLAlchemy asíncrono (**`asyncpg`** y **`aiosqlite`**).
+  * **Seguridad & RBAC:** Aislamiento estricto de perfiles en login (`coder`, `staff`, `admin`) y anonimización bajo NDA por Daniel Martinez.
+  * **Rate Limiting:** **SlowAPI** en endpoints de autenticación y radicación para evitar fuerza bruta.
+  * **Reglas de Negocio RIC:** Validación condicional de turnos mañana/tarde y subsanación en vivo por jhonata0200p.
+  * **Agendamiento:** Sistema de citas Paola/HSE con validaciones UX por Sbenavides14.
+  * **Frontend & Responsive:** Layouts adaptativos en React/Vite por Sebastian Castiblanco y pruebas unitarias con Vitest.
 
 ---
 
 ### 🏥 `Riwi/ZOE-CARE` & `Riwi/Pruebas SPA simulacro`
-* **Ubicación:** `C:\Users\SEBAS\Desktop\Riwi`
-* **Rol:** Sistemas de reservas y gestión médica en Single Page Applications.
-* **Stack:**
-  * Vanilla JS ES6+ con patrón **MVC** y Router propio por URL/Hash.
-  * Tailwind CSS v4 con `@tailwindcss/vite` y `@tailwindcss/postcss`.
-  * **JSON-Server** como mock REST API y `concurrently` para orquestación de scripts de desarrollo local.
-  * Backend Node.js / Express con cliente PostgreSQL `pg`.
+* **Ubicación:** `C:\Users\SEBAS\Desktop\Riwi\ZOE-CARE`
+* **Tipo de Proyecto:** **Proyecto Cooperativo / Colaborativo** (Equipo: *Alejandra Jimenez, Luis Medrano, Isac Alvarez, One/jebolivar, Diego Gonzalez, Nicolas Guarin, Jose Visbal, Maryuris Aragon, Sebastian Ortiz*).
+* **Rol:** Sistemas de reservas y gestión médica hospitalaria en Single Page Applications.
+* **Stack & Aportes de Equipo:**
+  * **Frontend SPA:** Vanilla JS ES6+ modular con patrón **MVC** y Router propio por URL/Hash, gestionado por One y Luis Medrano.
+  * **Cliente HTTP Unificado:** Módulo `httpClient.js` con captura global de errores e interceptor de endpoints.
+  * **Backend & Persistencia:** Express.js con pool nativo **`pg.Pool`** sin ORM para alto rendimiento en 12 tablas clínicas relacionales (`agendamiento_citas`, `atencion_clinica`, etc.) por Isac y Luis.
+  * **Mock & Tooling:** **JSON-Server** como mock REST API y `concurrently` para desarrollo concurrente local.
+  * **Estilos:** Tailwind CSS v4 con `@tailwindcss/vite` y `@tailwindcss/postcss` por Alejandra Jimenez.
 
 ---
 
